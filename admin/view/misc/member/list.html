@@ -1,0 +1,115 @@
+<section id="page" class="view">
+    <h1 class="page-header">User Management</h1>
+
+    <div class="block pnl-filter">
+        <form class="form-horizontal" novalidate="" name="form" ng-class="">
+            <div ng-repeat="th in filter.rows" class="columns {{filter.columns[th].class}}">
+                <div ng-switch="filter.columns[th].element">
+                    <label>{{ filter.columns[th].label }}</label>
+                    <input ng-switch-when="text" name="filter[{{th}}]" value="{{filter.columns[th].data}}"
+                           type="text"/>
+                    <div ng-switch-when="radio">
+                        <label ng-repeat="(key, value) in filter.columns[th].content">
+                            <input type="radio" ng-model="key" ng-value="filter.columns[th].data">
+                            {{value}}
+                        </label>
+                    </div>
+                    <select ng-switch-when="select"
+                            ng-model="filter.columns[th].data"
+                            ng-options="item.value for item in filter.columns[th].content track by item.key">
+                    </select>
+                    <input ng-switch-when="checkbox" name="filter[{{th}}]"
+                           ng-checked="{{filter.columns[th].data}}"
+                           type="checkbox"/>
+                    <span ng-switch-default>{{ filter.columns[th].data }}</span>
+                </div>
+            </div>
+            </select>
+            <div class="perc20 columns pull-right">
+                <a class="button small right pull-right" href="#" ng-click="filter()">
+                    Filter
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <label ng-if="header.columns" class="text-right mrgt-3">
+        <a ng-click="edit(0, guide_form)" href="">
+            <small>
+                <i class="fa fa-plus fa-1x icon-gray marr3"></i>
+                add new accommodation
+            </small>
+        </a>
+    </label>
+
+    <table width="100%" class="mrgb20 mrgt10 tbl-border">
+        <thead>
+        <tr class="tbl-header">
+            <th ng-repeat="th in header.rows" class="{{header.columns[th].class}}"
+                ng-click="sort(header.columns[th].field, header.columns[th].icon)"
+                width="{{header.columns[th].width}}">
+                {{ header.columns[th].data }}
+                <span ng-show="header.columns[th].icon"
+                      class="icon-menu {{header.columns[th].iconSort}}"
+                      ng-class="">
+                </span>
+            </th>
+            <th width="10%" ng-if="header.columns">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="no_item" class="no_item" ng-if="paging.TotalItem == 0">
+            <td colspan="12" align="center">
+                <span>No item found</span>
+            </td>
+        </tr>
+        <tr ng-repeat="(id, item) in list"  ng-if="paging.TotalItem > 0">
+            <td ng-repeat="td in header.rows" style="cursor: pointer;" nowrap="nowrap" ng-click="edit(item.pID)">
+                <span ng-switch="header.columns[td].element">
+                    <input ng-switch-when="text" value="{{item[td]}}" type="text"/>
+                    <input ng-switch-when="radio" value="{{item[td]}}" type="radio"/>
+                    <input ng-switch-when="checkbox" ng-checked="item[td]" type="checkbox"/>
+                    <span ng-switch-default>{{item[td]}}</span>
+                </span>
+            </td>
+            <td class="action-func">
+                <a ng-click="load_default_en(item.pID)" href="#" title="Configuration" alt="Configuration">
+                    <i class="fa fa-wrench fa-1x"></i>
+                </a>
+                <a href="#" ng-click="delete(item.pid, item.pName)" title="Delete" alt="Delete">
+                    <i class="fa fa-trash fa-1x"></i>
+                </a>
+                <a href="#" ng-click="view(item.pid)" title="View" alt="View">
+                    <i class="fa fa-search fa-1x"></i>
+                </a>
+                <a ng-switch="item.lock" href="#" ng-click="lock(item.pid)">
+                    <i ng-switch-when="true" class="fa fa-lock fa-1x"></i>
+                    <i ng-switch-when="false" class="fa fa-unlock-alt fa-1x"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="bottom-list bg-blue" ng-show="paging.TotalItem > 0">
+        <div class="pull-right">
+            <span>{{paging.TotalItem}} items</span>
+            <a ng-show="paging.TotalPage > 1 && paging.PageNum > 1" ng-click="fetchPage('p')"><span
+                    class="prevText">‹</span></a>
+            <span>{{paging.PageNum}} of {{paging.TotalPage}}</span>
+            <a ng-show="paging.TotalPage > 1 && paging.PageNum < paging.TotalPage" ng-click="fetchPage('n')"><span
+                    class="nextText">›</span></a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="clearfix">
+        <div class="pull-right">
+            <div ng-click="exportExcel()" title="Download to Excel">
+                <label class="left mrgr5 mrgt10 font-mini pointer">
+                    Download to Excel (CSV) <i class="fa fa-download fa-lg icon-dark-gray"></i>
+                </label>
+            </div>
+        </div>
+    </div>
+</section>

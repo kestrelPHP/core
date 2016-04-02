@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]>
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie8"><![endif]-->
+<!--[if IE 9 ]>
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <?php if ($title) { ?><title><?php echo $title; ?></title> <?php } ?>
+    <?php if ($base) { ?><base href="<?php echo $base; ?>" /><?php } ?>
+    <?php if ($description) { ?><meta name="description" content="<?php echo $description; ?>"/><?php } ?>
+    <?php if ($keywords) { ?><meta name="keywords" content="<?php echo $keywords; ?>"/><?php } ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css"/>
+
+    <link href="javascript/library/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <?php foreach ($styles as $style) { ?><link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>"
+          media="<?php echo $style['media']; ?>"/>
+    <?php } ?>
+
+    <?php foreach ($links as $link) { ?><link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>"/>
+    <?php } ?>
+
+    <link href="static/css/flag-icon.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body class="">
+<div id="page-wrapper">
+    <div id="page-login" class="container-fluid">
+        <div class="row">
+            <div id="header">
+                <div id="logo-login" class="container">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <a href="/">
+                                <img class="img-responsive inline" src="../logo.png">
+                                <label for="right-label" class="white clickable"> Biệt Thự Biển Phú Quốc </label>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div id="main">
+                <section id="login" class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form autocomplete="off" action="#!/login" method="post" id="user-login" accept-charset="UTF-8">
+                                <div class="field">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <input id="field-username"
+                                                   class="form-control"
+                                                   type="text" required="required" maxlength="60"
+                                                   name="login-user" placeholder="Username" />
+                                        </div>
+                                    </div>
+                                    <label for="right-label" class="inline error hide" id="login-name-message">
+                                        Missing details    </label>
+                                    <label for="right-label" class="inline error  hide">
+                                        Wrong username    </label>
+                                    <label for="right-label" class="inline error  hide">
+                                        Your account is temporarily deactivated. Please contact us for more details.    </label>
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <div class="field">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <input id="field-pass"
+                                                   class="form-control"
+                                                   type="password" required="required" maxlength="128"
+                                                   name="login-pass" placeholder="Password" />
+                                        </div>
+                                    </div>
+                                    <label for="right-label" class="inline error hide" id="login-pass-message">
+                                        Missing details    </label>
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <div class="field">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <select id="field-lang"
+                                                    name="login-lang" required="required" >
+                                                <?php echo $langList; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                                <div class="field">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <button type="submit" id="btn-log-in" class="button small mrgr10 left">
+                                                Log in
+                                            </button>
+                                            <label id="forgotten-details" class="inline mrgt5 left">
+                                                <a href="#" data-toggle="modal" data-target="#model-forgotten-details">
+                                                    <small>Forgotten your details?</small>
+                                                </a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+
+    </div>
+</div>
+<?php foreach ($scripts as $script) { ?>
+<script src="<?php echo $script; ?>" type="text/javascript"></script>
+<?php } ?>
+<script src="app/javascript/detectmobilebrowser.js" type="text/javascript"></script>
+<script src="app/javascript/common.js" type="text/javascript"></script>
+<div id="model-forgotten-details" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Retrieve Login Details</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button tiny" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

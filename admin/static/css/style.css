@@ -1,0 +1,59 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	color: #000;
+	font-size: 14px;
+    line-height: 1.4375rem;
+	width: 100%;
+}
+.top_nav {
+    border-bottom: 1px solid #f7f7f7;
+}
+.top_nav li {
+	float: left;
+	font-size: 12px;
+	padding: 0;
+	margin: 0px 0px 0px 13px;
+}
+
+#page-wrapper, #page-wrap {
+	background-color: #DDDDDD;
+}
+#page-wrap #main-body {
+	background-color: #f7f6f1;
+}
+
+#page-wrapper #page-login #header {
+	width: 100%;
+	float: left;
+	background-image: url(../image/site/pattern-dark-grey.png);
+	background-color: #323232;
+}
+#page-wrapper #page-login #header #logo-login {
+	padding:10px;
+	margin-top: 6.25rem;
+}
+
+#page-wrapper #page-login #main {
+	background: #76be43;
+	padding-top: 1.25rem;
+}
+
+#page-login #login select {
+	overflow: hidden;
+	color: rgb(0, 0, 0);
+}
+#btn-log-in{
+	background-color: #5db6dd;
+	border-color: #48add9;
+	color: #fff;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#btn-log-in:hover{
+	background-color: #3db6dd;
+}
+#forgotten-details{
+	font-size: 0.75rem;
+	font-weight: 400;
+}

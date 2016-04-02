@@ -1,0 +1,96 @@
+<section id="page" class="view">
+    <h1 class="page-header">Page Management</h1>
+
+    <div class="block pnl-filter">
+        <form class="form-horizontal" novalidate="" name="form" ng-class="'state-'+state">
+            <div class="perc20 columns">
+                <label>Partner</label>
+                <div class="large-11">
+                    <select id="partner_id" name="partner_id" ng-change="changePartner()" ng-model="filterPartner" >
+                        <option value="" selected="selected">All</option>
+                        <option value="20">AA Tadidi</option>
+                    </select>
+                </div>
+            </div>
+            <div class="perc20 columns">
+                <label>Partner</label>
+                <div class="large-11">
+                    <select id="partner_id2" name="partner_id" ng-change="changePartner()" ng-model="filterPartner" >
+                        <option value="" selected="selected">All</option>
+                        <option value="20">AA Tadidi</option>
+                    </select>
+                </div>
+            </div>
+            <div class="perc20 columns pull-right">
+                <a class="button small right pull-right" href="#" ng-click="filterList()">
+                    Filter
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <label ng-if="header.fields" class="text-right mrgt-3">
+        <a ng-click="edit(0, guide_form)" href="">
+            <small><span class="pull-right icon-plus icon-gray marr3"></span>
+                add new accommodation
+            </small>
+        </a>
+    </label>
+
+    <table width="100%" class="mrgb20 mrgt10 tbl-border">
+        <thead>
+        <tr class="tbl-header">
+            <th ng-repeat="th in header.order" class="{{header.fields[th].class}}"
+                ng-click="sort(header.fields[th].field, header.fields[th].icon)"
+                width="{{header.fields[th].width}}">
+                {{ header.fields[th].data }}
+                        <span ng-show="header.fields[th].icon" class="icon-menu {{header.fields[th].iconClass}}"
+                              ng-class=""></span>
+            </th>
+            <th width="10%" ng-if="header.fields">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="no_item" class="no_item" ng-if="paging.TotalItem == 0">
+            <td colspan="12" align="center">
+                <span>No guide found</span>
+            </td>
+        </tr>
+        <tr ng-repeat="(id, item) in list"  ng-if="paging.TotalItem > 0">
+            <td ng-repeat="td in header.order" style="cursor: pointer;" nowrap="nowrap" ng-click="edit(item.GuideID)">
+                {{item[td]}}
+            </td>
+            <td class="action-func">
+                <a href="#"
+                   title="Edit" alt="Edit" ng-click="edit(item.GuideID)"><span class="icon-wrench2"></span></a>
+                <a href="#" ng-click="deleteItem(item.GuideID, item.FullName)"
+                   title="Delete" alt="Delete"><span class="icon-trash"></span></a>
+                <a class="hide" ng-click="load_default_en(item.GuideId)" href="#"
+                   title="View Tasks" alt="View Tasks"><span class="icon-search"></span></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="bottom-list bg-blue" ng-show="paging.TotalItem > 0">
+        <div class="pull-right">
+            <span>{{paging.TotalItem}} items</span>
+            <a ng-show="paging.TotalPage > 1 && paging.PageNum > 1" ng-click="fetchPage('p')"><span
+                    class="prevText">‹</span></a>
+            <span>{{paging.PageNum}} of {{paging.TotalPage}}</span>
+            <a ng-show="paging.TotalPage > 1 && paging.PageNum < paging.TotalPage" ng-click="fetchPage('n')"><span
+                    class="nextText">›</span></a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="clearfix">
+        <div class="pull-right">
+            <div ng-click="exportExcel()" title="Download to Excel">
+                <label class="left mrgr5 mrgt10 font-mini pointer">
+                    Download to Excel (CSV) <i class="fa fa-download fa-lg icon-dark-gray"></i>
+                </label>
+            </div>
+        </div>
+    </div>
+</section>

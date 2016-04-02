@@ -1,0 +1,9 @@
+RewriteEngine on
+
+RewriteOptions Inherit
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule  (.*)                     index.php?query=$1        [L,QSA]
+
+# Don't allow browsing of directories
+Options -Indexes

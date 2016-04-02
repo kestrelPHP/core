@@ -1,0 +1,6 @@
+DIR_LOGS
+config.php
+system/storage/
+uploads/
+.idea/workspace.xml
+.idea/

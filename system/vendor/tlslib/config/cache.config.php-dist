@@ -1,0 +1,18 @@
+<?php
+return array (
+		'cache' => array (
+				'adapter' => array (
+						'name' => 'Filesystem',
+						'options' => array (
+								'dirLevel' => 2,
+								'cacheDir' => '/tmp',
+								'dirPermission' => 0755,
+								'filePermission' => 0666,
+								'namespaceSeparator' => '-'
+						)
+				),
+				'plugins' => array (
+						'serializer'
+				)
+		)
+);

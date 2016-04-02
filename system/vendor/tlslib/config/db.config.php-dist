@@ -1,0 +1,12 @@
+<?php
+return array( 
+		'db' => array (
+				'driver' => 'Pdo_Mysql',
+				'database' => 'tls',
+				'username' => 'root',
+				'password' => '',
+				'hostname' => 'localhost',
+				'port' => 3306,
+				'charset' => 'UTF8'
+		)
+);

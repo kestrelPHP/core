@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ngAdmin">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--<base href="http://core.local/">-->
+    <title ng-bind="title"></title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css"/>
+
+    <link href="javascript/library/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <link href="static/css/flag-icon.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src='javascript/library/modernizr.custom-2.6.2.min.js'></script>
+
+</head>
+
+<body >
+<div id="page-wrap" class="page-wrap">
+    <div id="main-top">
+
+    </div>
+    <div ng-controller="MainController">
+        <div id="main-nav">
+            <div class="container">
+                <div class="row">
+                    <nav class="top-bar" data-topbar>
+                        <!--<section class="top-bar-section" ng-bind-html="main_nav">-->
+                        <section class="top-bar-section">
+                            <ul>
+                                <li data-origin="console_dashboard" class="mni-dashboard">
+                                    <a href="#!/dashboard">
+                                        <span class="menu-icon">
+                                            <i class="fa fa-dashboard fa-2x"></i>
+                                        </span>
+                                        <span class="item-name">Dashboard<br></span>
+                                    </a>
+                                </li>
+                                <li data-origin="console_website" class="has-child mni-website" ref="website-subnav">
+                                    <a href="#!/website/setting">
+                                        <span class="menu-icon">
+                                            <i class="fa fa-newspaper-o fa-2x"></i>
+                                        </span>
+                                        <span class="item-name">Website<br></span>
+                                    </a>
+                                </li>
+                                <!--<li data-origin="console_setup" class="has-child mni-setup" ref="setup-subnav">-->
+                                    <!--<a href="#!/setup">-->
+                                        <!--<span class="menu-icon">-->
+                                            <!--<i class="fa fa-wrench fa-2x"></i>-->
+                                            <!--&lt;!&ndash;<span class="icon icon-menu-system"></span>&ndash;&gt;-->
+                                        <!--</span>-->
+                                        <!--<span class="item-name">Setup<br></span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <li data-origin="console_social_media" class="mni-social-media">
+                                    <a href="#!/social_media">
+                                        <span class="menu-icon">
+                                            <i class="fa fa-weixin fa-2x"></i>
+                                        </span>
+                                        <span class="item-name">Social Media<br></span>
+                                    </a>
+                                </li>
+                                <li data-origin="console_misc" class="has-child mni-misc" ref="misc-subnav">
+                                    <a href="#!/misc">
+                                        <span class="menu-icon">
+                                            <i class="fa fa-list fa-2x"></i>
+                                        </span>
+                                        <span class="item-name">Misc<br></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!--<div id="sub-nav" class="hide" ng-bind-html="sub_nav">-->
+        <div id="sub-nav" class="hide">
+            <div class="container">
+                <div class="row">
+                    <div class="sub-row website-subnav hide">
+                        <ul class="inline-list">
+                            <li class="sub-menu-setting">
+                                <a ng-reload-page="" href="#!/website/setting" target="">Setting</a>
+                            </li>
+                            <li class="sub-menu-language">
+                                <a ng-reload-page="" href="#!/website/language" target="">Languages</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sub-row setup-subnav hide">
+                        <ul class="inline-list">
+                            <li class="sub-menu-config">
+                                <a ng-reload-page="" href="#!/setup/config" target="">Configuration</a>
+                            </li>
+                            <li class="sub-menu-website">
+                                <a ng-reload-page="" href="#!/setup/website" target="">Website</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sub-row misc-subnav hide">
+                        <ul class="inline-list">
+                            <li class="sub-menu-member">
+                                <a ng-reload-page="" href="#!/misc/member" target="">Member Management</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-body">
+        <div class="container">
+            <div class="row">
+                <div class="inner">
+                    <div ng-view></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container text-right">
+            <div class="inner">
+                &copy; Hotel Link Solutions. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- js libraries -->
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-animate.min.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-touch.min.js'></script>
+<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-cookies.min.js'></script>
+
+<script src="javascript/library/ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" href="javascript/library/ckeditor/ng-ckeditor.css">
+
+<!-- js builds -->
+
+<!--SCRIPTS-->
+<!--
+<script src="assets/js/build/ngadmin-plugins-min.js"></script>
+<script src="assets/js/build/ngadmin-app-src.js"></script>
+-->
+
+<!--<script src="javascript/app/plugin.js"></script>-->
+<script src="javascript/app/menu.js"></script>
+<script src="javascript/app/redirect.js"></script>
+
+<!--<script src="javascript/app/general.js"></script>-->
+
+<script src="javascript/app/app.manage.js"></script>
+<script src="javascript/app/dashboard.js"></script>
+
+<script src="javascript/app/website/page.js"></script>
+<script src="javascript/app/website/setting.js"></script>
+<script src="javascript/app/website/language.js"></script>
+
+<script src="javascript/app/misc/member.js"></script>
+<!--SCRIPTS END-->
+</body>
+
+</html>
